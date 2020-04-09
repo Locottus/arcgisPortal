@@ -1,0 +1,39 @@
+html,
+body,
+#viewDiv {
+  padding: 0;
+  margin: 0;
+  height: 100%;
+  width: 100%;
+}
+
+
+#info {
+  top: 20px;
+  color: #444;
+  height: auto;
+  /* font-family: arial; */
+  right: 20px;
+  margin: 10px;
+  padding: 10px;
+  position: absolute;
+  width: auto;
+  z-index: 40;
+  border: solid 2px #666;
+  border-radius: 4px;
+  background-color: #fff;
+}
+
+#infoPoint {
+  background-color: black;
+  opacity: 0.75;
+  color: orange;
+  font-size: 18pt;
+  padding: 8px;
+  visibility: hidden;
+}
+
+
+button {
+  display: block;
+}
