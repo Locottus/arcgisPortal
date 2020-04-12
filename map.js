@@ -46,6 +46,7 @@ require([
 
     var pointGraphic = new Graphic({
       geometry: point,
+      campos: {nombre: "herlich", apellido: "gonzalez"},
       symbol: simpleMarkerSymbol,
     });
 
@@ -98,10 +99,9 @@ require([
     coordsWidget.innerHTML = coords;
     this.x = pt.longitude.toFixed(5);
     this.y = pt.latitude.toFixed(5);
-    console.log(this.x, this.y);
+    //console.log(this.x, this.y);
   }
 
-  function getGraphics() {}
 
   //*** Add event and show center coordinates after the view is finished moving e.g. zoom, pan ***//
   view.watch(["stationary"], function () {
@@ -115,9 +115,31 @@ require([
 
   view.on(["click"], function (evt) {
     console.log("clicked event triggered");
-    //view.hitTest(event).then(getGraphics);
+
+    view.hitTest(evt).then(getGraphics);
     //TODO ansehen data von Punk
-  });
+
+
+    function getGraphics(response) {
+      //console.log(response.results.length);
+      if (response.results.length) {
+        console.log(response);
+        const graphic = response.results.filter(function(result) {
+          return result.graphic.layer === graphicsLayer;
+        })[0].graphic;
+        const attributes = graphic.attributes;
+        //const category = attributes.CAT;
+        
+      }
+    }
+  
+
+
+
+  }
+  
+  
+  );
   // Create an instance of the Track widget
   // and add it to the view's UI
   var track = new Track({
