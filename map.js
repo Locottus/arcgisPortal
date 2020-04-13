@@ -73,7 +73,7 @@ require([
         point_x,
         point_y,
       } = response.data[i]);
-      console.log(atributos);
+      //console.log(atributos);
       createPoint(
         response.data[i].id,
         response.data[i].point_x,
@@ -136,15 +136,30 @@ require([
             response.results[0].graphic.atributos.municipi_1
         );
         //departamen_1, municipi_1, point_x, point_y ,n.descripcion
-        alert(
-          response.results[0].graphic.atributos.id +
-            " " +
-          response.results[0].graphic.atributos.departamen_1 +
-            " " +
-            response.results[0].graphic.atributos.municipi_1
-        );
+        // alert(
+        //   response.results[0].graphic.atributos.id +
+        //     " " +
+        //   response.results[0].graphic.atributos.departamen_1 +
+        //     " " +
+        //     response.results[0].graphic.atributos.municipi_1
+        // );
 
-        //TODO eines SHÖNE FOTO MACHEN, data ansehen
+        
+        url = "http://localhost:3000/incyt/api/sos/getalertsdetail?id=" + response.results[0].graphic.atributos.id;
+        esriRequest(url, options).then(function (response) {
+          //TODO
+          for (var i = 0; i < response.data.length; i++) {
+            var atributos = ({
+              id,
+              descripcion,
+              mes,
+              ano,
+              contador
+            } = response.data[i]);
+            console.log(atributos);
+          }
+        });
+        
       }
     }
   });
