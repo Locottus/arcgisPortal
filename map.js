@@ -26,7 +26,7 @@ require([
   var graphicsLayer = new GraphicsLayer();
   map.add(graphicsLayer);
 
-  function createPoint(id, longitude, latitude) {
+  function createPoint(id, longitude, latitude, atributos) {
     // Punkte Einstellungen
     var point = {
       id: id,
@@ -46,7 +46,7 @@ require([
 
     var pointGraphic = new Graphic({
       geometry: point,
-      campos: {nombre: "herlich", apellido: "gonzalez"},
+      atributos: atributos,
       symbol: simpleMarkerSymbol,
     });
 
@@ -63,16 +63,22 @@ require([
   };
 
   //PUNKTE Dienst addresse
-  url = "http://localhost:3000/incyt/api/sos/getalerts";
+  url = "http://localhost:3000/incyt/api/sos/getalertsmaster";
   esriRequest(url, options).then(function (response) {
     //TODO
-    //console.log(response.data);
-    //console.log(response.data.length);
     for (var i = 0; i < response.data.length; i++) {
+      var atributos = ({
+        departamen_1,
+        municipi_1,
+        point_x,
+        point_y,
+      } = response.data[i]);
+      console.log(atributos);
       createPoint(
         response.data[i].id,
         response.data[i].point_x,
-        response.data[i].point_y
+        response.data[i].point_y,
+        atributos
       );
     }
   });
@@ -102,7 +108,6 @@ require([
     //console.log(this.x, this.y);
   }
 
-
   //*** Add event and show center coordinates after the view is finished moving e.g. zoom, pan ***//
   view.watch(["stationary"], function () {
     showCoordinates(view.center);
@@ -114,32 +119,35 @@ require([
   });
 
   view.on(["click"], function (evt) {
-    console.log("clicked event triggered");
+    //console.log("clicked event triggered");
 
     view.hitTest(evt).then(getGraphics);
     //TODO ansehen data von Punk
 
-
     function getGraphics(response) {
       //console.log(response.results.length);
       if (response.results.length) {
-        console.log(response);
-        const graphic = response.results.filter(function(result) {
-          return result.graphic.layer === graphicsLayer;
-        })[0].graphic;
-        const attributes = graphic.attributes;
-        //const category = attributes.CAT;
-        
+        //TODO FIX FIELDS
+        console.log(
+          response.results[0].graphic.atributos.id +
+            " " +
+          response.results[0].graphic.atributos.departamen_1 +
+            " " +
+            response.results[0].graphic.atributos.municipi_1
+        );
+        //departamen_1, municipi_1, point_x, point_y ,n.descripcion
+        alert(
+          response.results[0].graphic.atributos.id +
+            " " +
+          response.results[0].graphic.atributos.departamen_1 +
+            " " +
+            response.results[0].graphic.atributos.municipi_1
+        );
+
+        //TODO eines SHÖNE FOTO MACHEN, data ansehen
       }
     }
-  
-
-
-
-  }
-  
-  
-  );
+  });
   // Create an instance of the Track widget
   // and add it to the view's UI
   var track = new Track({
