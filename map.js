@@ -131,7 +131,7 @@ require([
         console.log(
           response.results[0].graphic.atributos.id +
             " " +
-          response.results[0].graphic.atributos.departamen_1 +
+            response.results[0].graphic.atributos.departamen_1 +
             " " +
             response.results[0].graphic.atributos.municipi_1
         );
@@ -144,8 +144,9 @@ require([
         //     response.results[0].graphic.atributos.municipi_1
         // );
 
-        
-        url = "http://localhost:3000/incyt/api/sos/getalertsdetail?id=" + response.results[0].graphic.atributos.id;
+        url =
+          "http://localhost:3000/incyt/api/sos/getalertsdetail?id=" +
+          response.results[0].graphic.atributos.id;
         esriRequest(url, options).then(function (response) {
           //TODO
           for (var i = 0; i < response.data.length; i++) {
@@ -154,12 +155,11 @@ require([
               descripcion,
               mes,
               ano,
-              contador
+              contador,
             } = response.data[i]);
             console.log(atributos);
           }
         });
-        
       }
     }
   });

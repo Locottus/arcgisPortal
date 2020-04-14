@@ -28,25 +28,74 @@
     />
     <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" >
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> -->
-    <link rel="stylesheet" href="bootstrap.min.css" >
-    <link rel="stylesheet" href="font-awesome.min.css">
-  
+    <link rel="stylesheet" href="bootstrap.min.css" />
+    <link rel="stylesheet" href="font-awesome.min.css" />
+
     <script src="https://js.arcgis.com/4.14/"></script>
     <script src="map.js"></script>
     <!-- <script src="herlich.js"></script> -->
+    <script>
+      function unhide() {
+        //alert("unhide");
+        document.getElementById("infoForm").style.display = "block";
+      }
+
+      function hide() {
+        //alert("hide");
+        document.getElementById("infoForm").style.display = "none";
+      }
+    </script>
   </head>
 
   <body>
-
-    <!-- <div id="info">
+    <div id="info">
       <div>
-        <h1 class="text-center">Menu</h1> 
+        <h1 class="text-center">Menu</h1>
       </div>
-      <button id="Point" class ="btn btn-info text-center">Cubo 1</button>
-      <button id="Point" class ="btn btn-info">Cubo 2</button>
-      <button id="Point" class ="btn btn-info">Cubo 3</button>
-    </div> -->
+      <button id="Point" class="btn btn-info text-center" onclick="unhide()">
+        Reportar Problema
+      </button>
+      <!-- <button id="Point" class ="btn btn-info">Cubo 2</button>
+      <button id="Point" class ="btn btn-info">Cubo 3</button> -->
+    </div>
 
+    <div id="infoForm">
+      <h2>Reporte de Problema</h2>
+      <!-- <button id="Point" class ="btn btn-info text-center" onclick="hide()">Reportar Problema</button> -->
+      <form action="/" class="form-container">
+        <!-- <label for="email"><b>Email</b></label> -->
+        <input
+          type="text"
+          placeholder="Ingrese Email"
+          name="email"
+          required
+        /><br />
+
+        <!-- <label for="municipio"><b>Problema</b></label> -->
+        <input
+          type="text"
+          placeholder="Ingrese municipio"
+          name="municipio"
+          required
+        /><br />
+
+        <!-- <label for="txt"><b>Problema</b></label> -->
+        <textarea
+          type="text"
+          placeholder="Ingrese Problema"
+          name="txt"
+          rows="3"
+          cols="40"
+          required
+        ></textarea
+        ><br />
+
+        <button type="submit" class="btn btn-info text-center">Reportar</button>
+        <button type="submit" class="btn text-center cancel" onclick="hide()">
+          Cancelar
+        </button>
+      </form>
+    </div>
 
     <div id="viewDiv"></div>
   </body>
