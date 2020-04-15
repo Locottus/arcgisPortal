@@ -1,3 +1,10 @@
+
+  var municipios = [];
+  var departamentos = [];
+  var necesidad = [];
+  var x = 0;
+  var y = 0;
+
 require([
   "esri/widgets/Track",
   "esri/views/MapView",
@@ -6,11 +13,6 @@ require([
   "esri/layers/GraphicsLayer",
   "esri/request",
 ], function (Track, MapView, Map, Graphic, GraphicsLayer, esriRequest) {
-  var x = 0;
-  var y = 0;
-  var municipios = [];
-  var departamentos = [];
-  var necesidad = [];
 
   var map = new Map({
     basemap: "topo",
@@ -76,7 +78,7 @@ require([
   url = "http://localhost:3000/incyt/api/sos/getmunicipios";
   esriRequest(url, options).then(function (response) {
     this.municipios = response.data;
-    //console.log(this.municipios);
+    console.log(this.municipios);
   });
 
   //Staadten detail Dienst addresse

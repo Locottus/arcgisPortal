@@ -35,8 +35,47 @@
     <script src="map.js"></script>
     <!-- <script src="herlich.js"></script> -->
     <script>
+
+      function cargaDepto(){
+         var select = document.getElementById("selectDepartamento"); 
+         //console.log(departamentos);
+         for (var i = 0; i < departamentos.length; i++ ){
+            var el = document.createElement("option");
+            el.textContent = departamentos[i].departamen_1;
+            el.value = departamentos[i].departamen_1;
+            select.appendChild(el);
+         }
+      }
+
+      function clearSelect(select) {
+        var length = select.options.length;
+        for (i = length -1 ; i >=0 ; i--) {
+          select.options[i] = null;
+        }
+      }
+
+      function cargaMuni(){
+        var select = document.getElementById("selectMunicipio");
+        clearSelect(select);
+        // console.log("cargaMuni()");
+        var d = document.getElementById("selectDepartamento");
+        var dval = d.options[d.selectedIndex].value;
+        // console.log(dval);
+        for(var i = 0; i < municipios.length; i++){
+          if (municipios[i].departamen_1 === dval){
+            
+            var el = document.createElement("option");
+            el.textContent = municipios[i].municipi_1;
+            el.value = municipios[i].id;
+            select.appendChild(el);            
+          }
+        }
+      }
+
       function unhide() {
         //alert("unhide");
+        cargaDepto();
+
         document.getElementById("infoForm").style.display = "block";
       }
 
@@ -62,47 +101,40 @@
     <div id="infoForm">
       <h2>Reporte de Problema</h2>
       <!-- <button id="Point" class ="btn btn-info text-center" onclick="hide()">Reportar Problema</button> -->
-      <form action="/" class="form-container">
+      <!-- <form  class="form-container"> -->
         <!-- <label for="email"><b>Email</b></label> -->
         <input
           type="text"
           placeholder="Ingrese Email"
           name="email"
-          required
-        /><br />
+          
+        /><br /><br/>
 
-        <!-- <label for="municipio"><b>Problema</b></label> -->
-        <input
-          type="text"
-          placeholder="Ingrese departamento"
-          name="departamento"
-          required
-        /><br />
+        <label for="ldepartamento"><b>Departamento</b></label>
+        <select id="selectDepartamento" onchange="cargaMuni()">
+          <option></option>
+        </select></br>
 
-        <!-- <label for="municipio"><b>Problema</b></label> -->
-        <input
-          type="text"
-          placeholder="Ingrese municipio"
-          name="municipio"
-          required
-        /><br />
+        <label for="lmunicipio"><b>Municipio</b></label>
+        <select id="selectMunicipio"  >
+          <option></option>
+        </select></br>
 
-        <!-- <label for="txt"><b>Problema</b></label> -->
         <textarea
           type="text"
           placeholder="Ingrese Problema"
           name="txt"
           rows="3"
           cols="40"
-          required
+          
         ></textarea
-        ><br />
+        ><br /><br/>
 
-        <button type="submit" class="btn btn-info text-center">Reportar</button>
+        <button type="submit" class="btn btn-info text-center">Reportar</button>&nbsp;
         <button type="submit" class="btn text-center cancel" onclick="hide()">
           Cancelar
         </button>
-      </form>
+      <!-- </form> -->
     </div>
 
     <div id="viewDiv"></div>
