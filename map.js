@@ -8,6 +8,9 @@ require([
 ], function (Track, MapView, Map, Graphic, GraphicsLayer, esriRequest) {
   var x = 0;
   var y = 0;
+  var municipios = [];
+  var departamentos = [];
+  var necesidad = [];
 
   var map = new Map({
     basemap: "topo",
@@ -61,6 +64,27 @@ require([
     },
     responseType: "json",
   };
+
+  //Staadten detail Dienst addresse
+  url = "http://localhost:3000/incyt/api/sos/getdepartamentos";
+  esriRequest(url, options).then(function (response) {
+    this.departamentos = response.data;
+    //console.log(this.departamentos);
+  });
+
+  //Staadten detail Dienst addresse
+  url = "http://localhost:3000/incyt/api/sos/getmunicipios";
+  esriRequest(url, options).then(function (response) {
+    this.municipios = response.data;
+    //console.log(this.municipios);
+  });
+
+  //Staadten detail Dienst addresse
+  url = "http://localhost:3000/incyt/api/sos/getNecesidad";
+  esriRequest(url, options).then(function (response) {
+    this.necesidad = response.data;
+    //console.log(this.necesidad);
+  });
 
   //PUNKTE Dienst addresse
   url = "http://localhost:3000/incyt/api/sos/getalertsmaster";
