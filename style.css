@@ -54,3 +54,24 @@ button {
   border-radius: 4px;
   background-color: #fff;
 }
+
+
+
+/*FORMA DE datos de punto*/
+
+/* The popup form - hidden by default */
+#infoRegion {
+  display: none;
+  top: 10px;
+  color: #444;
+  height: auto;
+  right: 10px;
+  margin: 10px;
+  padding: 10px;
+  position: absolute;
+  width: auto;
+  z-index: 40;
+  border: solid 2px #666;
+  border-radius: 4px;
+  background-color: #fff;
+}

@@ -71,7 +71,7 @@ require([
   url = "http://localhost:3000/incyt/api/sos/getdepartamentos";
   esriRequest(url, options).then(function (response) {
     this.departamentos = response.data;
-    //console.log(this.departamentos);
+    console.log(this.departamentos);
   });
 
   //Staadten detail Dienst addresse
@@ -85,7 +85,7 @@ require([
   url = "http://localhost:3000/incyt/api/sos/getNecesidad";
   esriRequest(url, options).then(function (response) {
     this.necesidad = response.data;
-    //console.log(this.necesidad);
+    console.log(this.necesidad);
   });
 
   //PUNKTE Dienst addresse
