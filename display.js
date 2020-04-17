@@ -83,20 +83,20 @@ function postData(){
     const src = 'Incyt WebPage SOS Agua #SOSAGUA';
     const url = "http://localhost:3000/incyt/api/sosagua/createalerts";
     var template = '{' + 
-      '"id":"'  +           Date.now()  +  '"' + "," +
-      '"name":"'  +           document.getElementById("email").value +  '"' +"," +
-      '"screen_name":"'  +    document.getElementById("nombre").value +  '"' + "," +
-      '"retweet_count":"'  +  Date.now() +  '"' +"," +
-      '"text":"'  +           document.getElementById("txt").value +  '"' + "," +
-      '"location":' +        '["' + document.getElementById("selectDepartamento").value + '","' + document.getElementById("selectMunicipio").value + '"]' + "," +
-      '"coordinates":"'  +     "[" + x.toString() + "," + y.toString() +"]"  + '"' + "," +
-      '"geo_enabled":"'  +     'True' +  '"' + "," +
-      '"geo":"'  +            'True' +  '"' +"," +
-      '"created_at":"'  +      Date.now() +  '"' +"," +
-      '"favorite_count":"'  +  Date.now() +  '"' +"," +
-      '"hashtags":'      +   '[' + '"#SOSAGUA","'  + document.getElementById("selectNecesidad").value + '"],' +
-      '"status_count":"'  +  Date.now() +  '"' +"," +
-      '"place":' +           '["' + document.getElementById("selectDepartamento").value + '","' +document.getElementById("selectMunicipio").value + '"]' + "," +
+      '"id":"'  +           Date.now()  +  '",' +
+      '"name":"'  +           document.getElementById("email").value +  '",' +
+      '"screen_name":"'  +    document.getElementById("nombre").value +  '",' +
+      '"retweet_count":"'  +  Date.now() +  '",' +
+      '"text":"'  +           document.getElementById("txt").value +  '",' +
+      '"location":["' + document.getElementById("selectDepartamento").value + '","' + document.getElementById("selectMunicipio").value + '"],' +
+      '"coordinates":" [' + x.toString() + "," + y.toString() +"]"  + '",' +
+      '"geo_enabled":"'  +     'True' +  '",' +
+      '"geo":"'  +            'True' +  '",' +
+      '"created_at":"'  +      Date.now() +  '",' +
+      '"favorite_count":"'  +  Date.now() +  '",' +
+      '"hashtags": [' + '"#SOSAGUA","'  + document.getElementById("selectNecesidad").value + '"],' +
+      '"status_count":"'  +  Date.now() +  '",' +
+      '"place": ["' + document.getElementById("selectDepartamento").value + '","' +document.getElementById("selectMunicipio").value + '"],' +
       '"source":"'  +         src + '",' +
       '"locationId":"'  +     mId + '",' +
       '"necesidadId":"'  +    nId + '"' +
@@ -104,18 +104,13 @@ function postData(){
 
    
     console.log(template);
-    try{
-      var xhr = new XMLHttpRequest();
-      xhr.open("POST", url, false);//true async
-      xhr.setRequestHeader('Content-Type', 'application/json');
-  
-      //var obj = JSON.parse(jsontxt);
-      xhr.send(JSON.stringify(template));
-      alert("la informacion ha sido enviada, espere 24 horas a que sea procesada para que pueda ser vista en nuestro sistema.");
-      hide('infoForm');
-    }catch{
-      alert('ups, no se envio el reporte');
-    }
-    //xhr.send(JSON.stringify({ value: value    }));
+    $.post(url, JSON.parse(template), function(response){ 
+      if ("{'msg':'OK'}" === response)
+        alert("la informacion ha sido enviada, espere 24 horas a que sea procesada para que pueda ser vista en nuestro sistema. " );
+      else
+        alert ("hubo un error al enviar el mensaje, por favor intente despues");
+        console.log(response);
+});
+
 }
 //https://stackoverflow.com/questions/6396101/pure-javascript-send-post-data-without-a-form
