@@ -53,10 +53,17 @@
       <!-- <form  class="form-container"> -->
         <!-- <label for="email"><b>Email</b></label> -->
         <input
+          id ="email"
           type="text"
           placeholder="Ingrese Email"
           name="email"
-          
+        /><br /><br/>
+
+        <input
+          id ="nombre"
+          type="text"
+          placeholder="Ingrese Nombre"
+          name="nombre"
         /><br /><br/>
 
         <label for="lnecesidad"><b>Necesidad</b></label>
@@ -75,6 +82,7 @@
         </select></br>
 
         <textarea
+          id ="txt" 
           type="text"
           placeholder="Ingrese Problema"
           name="txt"
@@ -83,7 +91,7 @@
         ></textarea
         ><br /><br/>
 
-        <button type="submit" class="btn btn-info text-center">Reportar</button>&nbsp;
+        <button type="submit" class="btn btn-info text-center" onclick="postData()">Reportar</button>&nbsp;
         <button type="submit" class="btn text-center cancel" onclick="hide('infoForm')">
           Cancelar
         </button>
@@ -99,15 +107,12 @@
       </table>
       <br>
       
-      
       <button id="Point" class="btn btn-info text-center" onclick="hide('infoRegion')">
         Cerrar
       </button>
-      <!-- <button id="Point" class ="btn btn-info">Cubo 2</button>
-      <button id="Point" class ="btn btn-info">Cubo 3</button> -->
     </div>
-
 
     <div id="viewDiv"></div>
   </body>
 </html>
+<!--herlich steven gonzalez zambrano 2020-->

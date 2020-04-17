@@ -69,21 +69,21 @@ require([
   url = "http://localhost:3000/incyt/api/sos/getdepartamentos";
   esriRequest(url, options).then(function (response) {
     this.departamentos = response.data;
-    //console.log(this.departamentos);
+    console.log(this.departamentos);
   });
 
   //Staadten detail Dienst addresse
   url = "http://localhost:3000/incyt/api/sos/getmunicipios";
   esriRequest(url, options).then(function (response) {
     this.municipios = response.data;
-    //console.log(this.municipios);
+    console.log(this.municipios);
   });
 
   //Staadten detail Dienst addresse
   url = "http://localhost:3000/incyt/api/sos/getNecesidad";
   esriRequest(url, options).then(function (response) {
     this.necesidad = response.data;
-    //console.log(this.necesidad);
+    console.log(this.necesidad);
   });
 
   //PUNKTE Dienst addresse
@@ -151,7 +151,7 @@ require([
     function getGraphics(response) {
       //console.log(response.results.length);
       if (response.results.length) {
-        //TODO FIX FIELDS
+        // FIX FIELDS
         // console.log(
         //   response.results[0].graphic.atributos.id +
         //     " " +
@@ -164,14 +164,6 @@ require([
           " , " +
           response.results[0].graphic.atributos.municipi_1;
 
-        //departamen_1, municipi_1, point_x, point_y ,n.descripcion
-        // alert(
-        //   response.results[0].graphic.atributos.id +
-        //     " " +
-        //   response.results[0].graphic.atributos.departamen_1 +
-        //     " " +
-        //     response.results[0].graphic.atributos.municipi_1
-        // );
 
         url =
           "http://localhost:3000/incyt/api/sos/getalertsdetail?id=" +
@@ -199,9 +191,9 @@ require([
               ano,
               contador,
             } = response.data[i]);
-            console.log(atributos);
+            //console.log(atributos);
 
-            //TODO IM WEBSITE ANSEHEN
+            //IM WEBSITE ANSEHEN
             var row = table.insertRow(i + 1);
             var cell0 = row.insertCell(0);
             var cell1 = row.insertCell(1);
