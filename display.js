@@ -59,7 +59,27 @@ window.onload = function () {
 };
 
 
+function getMunicipioId(m){
+  for(var i = 0; i < municipios.length; i++){
+    if (m === municipios[i].municipi_1)
+    return municipios[i].id;
+  }
+  return 0;
+}
+
+function getNecesidadId(n){
+  for(var i = 0; i < necesidad.length; i++){
+    if (n === necesidad[i].descripcion)
+    return necesidad[i].id;
+  }
+  return 0;
+}
+
+
 function postData(){
+    const mId = getMunicipioId(document.getElementById("selectMunicipio").value);
+    const nId = getNecesidadId(document.getElementById("selectNecesidad").value);
+    //console.log(mId + " " + nId);
     const src = 'Incyt WebPage SOS Agua #SOSAGUA';
     const url = "http://localhost:3000/incyt/api/sosagua/createalerts";
     var template = '{' + 
@@ -68,7 +88,7 @@ function postData(){
       '"screen_name":"'  +    document.getElementById("nombre").value +  '"' + "," +
       '"retweet_count":"'  +  Date.now() +  '"' +"," +
       '"text":"'  +           document.getElementById("txt").value +  '"' + "," +
-      '"location":' +        '["' + document.getElementById("selectDepartamento").value + '","' +document.getElementById("selectMunicipio").value + '"]' + "," +
+      '"location":' +        '["' + document.getElementById("selectDepartamento").value + '","' + document.getElementById("selectMunicipio").value + '"]' + "," +
       '"coordinates":"'  +     "[" + x.toString() + "," + y.toString() +"]"  + '"' + "," +
       '"geo_enabled":"'  +     'True' +  '"' + "," +
       '"geo":"'  +            'True' +  '"' +"," +
@@ -77,23 +97,25 @@ function postData(){
       '"hashtags":'      +   '[' + '"#SOSAGUA","'  + document.getElementById("selectNecesidad").value + '"],' +
       '"status_count":"'  +  Date.now() +  '"' +"," +
       '"place":' +           '["' + document.getElementById("selectDepartamento").value + '","' +document.getElementById("selectMunicipio").value + '"]' + "," +
-      '"source":"'  +          src + '"' +
+      '"source":"'  +         src + '",' +
+      '"locationId":"'  +     mId + '",' +
+      '"necesidadId":"'  +    nId + '"' +
   '}';
 
-
-    console.log(jsontxt);
-    var xhr = new XMLHttpRequest();
-    xhr.open("POST", url, true);
-    xhr.setRequestHeader('Content-Type', 'application/json');
-    
-    //TODO ADD ORIGEN,MUNICIPIO,NECESIDAD -->IDS AND SEND POST REQUEST
-    //twitjson,twitstring,origen,municipio, necesidad
-    var jsontxt = '{"twitjson":' + template + ',"twitstring": ' + template + '}';
-    var obj = JSON.parse(jsontxt);
-    //console.log(xhr.send(obj));
-
+   
+    console.log(template);
+    try{
+      var xhr = new XMLHttpRequest();
+      xhr.open("POST", url, false);//true async
+      xhr.setRequestHeader('Content-Type', 'application/json');
+  
+      //var obj = JSON.parse(jsontxt);
+      xhr.send(JSON.stringify(template));
+      alert("la informacion ha sido enviada, espere 24 horas a que sea procesada para que pueda ser vista en nuestro sistema.");
+      hide('infoForm');
+    }catch{
+      alert('ups, no se envio el reporte');
+    }
     //xhr.send(JSON.stringify({ value: value    }));
-    //alert("la informacion ha sido enviada");
-    hide('infoForm');
 }
 //https://stackoverflow.com/questions/6396101/pure-javascript-send-post-data-without-a-form
