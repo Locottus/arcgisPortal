@@ -66,28 +66,28 @@ require([
   };
 
   //Staadten detail Dienst addresse
-  url = "http://localhost:3000/incyt/api/sos/getdepartamentos";
+  url = "https://arcgis-web.url.edu.gt/incyt/api/sosagua/getdepartamentos";
   esriRequest(url, options).then(function (response) {
     this.departamentos = response.data;
     console.log(this.departamentos);
   });
 
   //Staadten detail Dienst addresse
-  url = "http://localhost:3000/incyt/api/sos/getmunicipios";
+  url = "https://arcgis-web.url.edu.gt/incyt/api/sosagua/getmunicipios";
   esriRequest(url, options).then(function (response) {
     this.municipios = response.data;
     console.log(this.municipios);
   });
 
   //Staadten detail Dienst addresse
-  url = "http://localhost:3000/incyt/api/sos/getNecesidad";
+  url = "https://arcgis-web.url.edu.gt/incyt/api/sosagua/getNecesidad";
   esriRequest(url, options).then(function (response) {
     this.necesidad = response.data;
     console.log(this.necesidad);
   });
 
   //PUNKTE Dienst addresse
-  url = "http://localhost:3000/incyt/api/sos/getalertsmaster";
+  url = "https://arcgis-web.url.edu.gt/incyt/api/sosagua/getalertsmaster";
   esriRequest(url, options).then(function (response) {
     //TODO
     for (var i = 0; i < response.data.length; i++) {
@@ -166,7 +166,7 @@ require([
 
 
         url =
-          "http://localhost:3000/incyt/api/sos/getalertsdetail?id=" +
+          "https://arcgis-web.url.edu.gt/incyt/api/sosagua/getalertsdetail?id=" +
           response.results[0].graphic.atributos.id;
         esriRequest(url, options).then(function (response) {
           //console.log(titulo);

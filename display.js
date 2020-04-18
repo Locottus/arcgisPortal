@@ -81,7 +81,7 @@ function postData(){
     const nId = getNecesidadId(document.getElementById("selectNecesidad").value);
     //console.log(mId + " " + nId);
     const src = 'Incyt WebPage SOS Agua #SOSAGUA';
-    const url = "http://localhost:3000/incyt/api/sosagua/createalerts";
+    const url = "https://arcgis-web.url.edu.gt/incyt/api/sosagua/createalerts";
     var template = '{' + 
       '"id":"'  +           Date.now()  +  '",' +
       '"name":"'  +           document.getElementById("email").value +  '",' +
