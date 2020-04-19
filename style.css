@@ -8,11 +8,11 @@ body,
 }
 
 #info {
-  top: 20px;
+  top: 10px;
   color: #444;
   height: auto;
   /* font-family: arial; */
-  right: 20px;
+  right: 10px;
   margin: 10px;
   padding: 10px;
   position: absolute;

@@ -16,7 +16,7 @@
     <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" >
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> -->
     <link rel="stylesheet" href="bootstrap.min.css" />
-    <link rel="stylesheet" href="font-awesome.min.css" />
+    <link rel="stylesheet" href="fontawesome-free-5.13.0-web/css/all.css" />
 
     <!-- <script src="https://js.arcgis.com/4.14/"></script> -->
     <script src="dojo.js"></script>
@@ -29,13 +29,17 @@
   <body>
     <section id="mainForm">
     <div id="info">
-      <div>
+      <!-- <div>
         <h2 class="text-center">#AGUAGT</h2>
         <h2 class="text-center">#SOSAGUAGT</h2>
-      </div>
-      <button id="Point" class="btn btn-info text-center" onclick="unhide('infoForm')">
+      </div> -->
+      <!-- <button id="Point" class="btn btn-info text-center" onclick="unhide('infoForm')">
         Reportar Problema
-      </button>
+      </button> -->
+      <i class="fas fa-2x fa-exclamation-triangle" onclick="unhide('infoForm')">&nbsp; Reportar</i>
+    <!-- </br>
+      <i class="fas fa-2x fa-exclamation-triangle" onclick="unhide('infoForm')">&nbsp; Reportar</i> -->
+
     </div>
   </section>
     <section id="formaReporte">
@@ -79,11 +83,14 @@
           cols="40"
         ></textarea
         ><br /><br/>
+        
+        <i class="fas fa-3x fa-share-alt-square" onclick="postData()"></i>
+        <i class="fas fa-3x fa-window-close" onclick="hide('infoForm')"></i>
 
-        <button type="submit" class="btn btn-info text-center" onclick="postData()">Reportar</button>&nbsp;
+        <!-- <button type="submit" class="btn btn-info text-center" onclick="postData()">Reportar</button>&nbsp;
         <button type="submit" class="btn btn-danger text-center" onclick="hide('infoForm')">
           X
-        </button>
+        </button> -->
     </div>
   </section>
     <section id="seccionTabla">
