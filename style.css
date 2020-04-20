@@ -36,6 +36,9 @@ button {
   display: block;
 }
 
+.i{
+  display:block;
+}
 /*FORMA DE BOTON*/
 
 /* The popup form - hidden by default */
