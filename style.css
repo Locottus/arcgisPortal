@@ -8,7 +8,7 @@ body,
 }
 
 #info {
-  top: 20px;
+  top: 30px;
   color: #444;
   height: auto;
   /* font-family: arial; */
@@ -44,7 +44,7 @@ button {
 /* The popup form - hidden by default */
 #infoForm {
   display: none;
-  top: 20px;
+  top: 30px;
   color: #444;
   height: auto;
   right: 10px;
@@ -65,7 +65,7 @@ button {
 /* The popup form - hidden by default */
 #infoRegion {
   display: none;
-  top: 20px;
+  top: 30px;
   color: #444;
   height: auto;
   right: 10px;
