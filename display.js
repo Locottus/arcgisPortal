@@ -104,13 +104,19 @@ function postData(){
 
    
     console.log(template);
+
+  if (document.getElementById("txt").value.length > 0 && document.getElementById("email").value.length > 0 && document.getElementById("nombre").value.length > 0){
     $.post(url, JSON.parse(template), function(response){ 
-      if ("{'msg':'OK'}" === response)
+      if ("{'msg':'OK'}" === response){
         alert("la informacion ha sido enviada, espere 24 horas a que sea procesada para que pueda ser vista en nuestro sistema. " );
-      else
+        document.getElementById("email").value = "";
+        document.getElementById("nombre").value = "";
+        document.getElementById("txt").value = "";
+      }else
         alert ("hubo un error al enviar el mensaje, por favor intente despues");
         console.log(response);
-});
-
+    });
+  }else
+    alert("por favor llene todos los campos para reportar el alerta");
 }
 //https://stackoverflow.com/questions/6396101/pure-javascript-send-post-data-without-a-form
