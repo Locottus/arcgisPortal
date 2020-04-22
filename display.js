@@ -82,8 +82,8 @@ function postData(){
     //console.log(mId + " " + nId);
     const src = 'Incyt WebPage SOS Agua #SOSAGUA';
     const url = "https://arcgis-web.url.edu.gt/incyt/api/sosagua/createalerts";
-    var template = '{' + 
-      '"id":"'  +           Date.now()  +  '",' +
+    var template =  
+      '{"id":"'  +           Date.now()  +  '",' +
       '"name":"'  +           document.getElementById("email").value +  '",' +
       '"screen_name":"'  +    document.getElementById("nombre").value +  '",' +
       '"retweet_count":"'  +  Date.now() +  '",' +
@@ -99,8 +99,8 @@ function postData(){
       '"place": ["' + document.getElementById("selectDepartamento").value + '","' +document.getElementById("selectMunicipio").value + '"],' +
       '"source":"'  +         src + '",' +
       '"locationId":"'  +     mId + '",' +
-      '"necesidadId":"'  +    nId + '"' +
-  '}';
+      '"necesidadId":"'  +    nId + '"}' ;
+  
 
    
     console.log(template);

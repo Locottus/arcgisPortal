@@ -69,21 +69,21 @@ require([
   url = "https://arcgis-web.url.edu.gt/incyt/api/sosagua/getdepartamentos";
   esriRequest(url, options).then(function (response) {
     this.departamentos = response.data;
-    console.log(this.departamentos);
+    //console.log(this.departamentos);
   });
 
   //Staadten detail Dienst addresse
   url = "https://arcgis-web.url.edu.gt/incyt/api/sosagua/getmunicipios";
   esriRequest(url, options).then(function (response) {
     this.municipios = response.data;
-    console.log(this.municipios);
+    //console.log(this.municipios);
   });
 
   //Staadten detail Dienst addresse
   url = "https://arcgis-web.url.edu.gt/incyt/api/sosagua/getNecesidad";
   esriRequest(url, options).then(function (response) {
     this.necesidad = response.data;
-    console.log(this.necesidad);
+    //console.log(this.necesidad);
   });
 
   //PUNKTE Dienst addresse
