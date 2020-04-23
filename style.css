@@ -7,6 +7,15 @@ body,
   width: 100%;
 }
 
+#mainImage{
+  bottom: 30px;
+  /* font-family: arial; */
+  position: absolute;
+  z-index: 100;
+  background-color:none;
+  
+}
+
 #info {
   top: 30px;
   color: #444;
@@ -81,8 +90,8 @@ button {
 
 
 img {
-  width: 40%;
-
+  width: 30%;
+  height: auto;
 }
 
 .mainImage{
