@@ -75,6 +75,17 @@ function getNecesidadId(n){
   return 0;
 }
 
+function acurateLocation(){
+  if (document.getElementById('checkLocation').checked === true){
+    track.start();
+    this.accuLocation = true;
+   
+  }else{
+    track.stop();
+    this.accuLocation = false;
+  }
+  
+}
 
 function postData(){
     const mId = getMunicipioId(document.getElementById("selectMunicipio").value);
@@ -87,14 +98,14 @@ function postData(){
       '"name":"'  +           document.getElementById("email").value +  '",' +
       '"screen_name":"'  +    document.getElementById("nombre").value +  '",' +
       '"retweet_count":"'  +  Date.now() +  '",' +
-      '"text":"'  +           document.getElementById("txt").value +  '",' +
+      '"text":"'  +           document.getElementById("txt").value.toString().replace("'"," ").replace('"'," ") +  '",' +
       '"location":["' + document.getElementById("selectDepartamento").value + '","' + document.getElementById("selectMunicipio").value + '"],' +
       '"coordinates":" [' + x.toString() + "," + y.toString() +"]"  + '",' +
-      '"geo_enabled":"'  +     'True' +  '",' +
-      '"geo":"'  +            'True' +  '",' +
+      '"geo_enabled":"'  +      accuLocation  +  '",' +
+      '"geo":"'  +      accuLocation  +  '",' +
       '"created_at":"'  +      Date.now() +  '",' +
       '"favorite_count":"'  +  Date.now() +  '",' +
-      '"hashtags": [' + '"#SOSAGUA","'  + document.getElementById("selectNecesidad").value + '"],' +
+      '"hashtags": [' + '"#SOSAGUA,#AGUAGT,#SINAGUA","'  + document.getElementById("selectNecesidad").value + '"],' +
       '"status_count":"'  +  Date.now() +  '",' +
       '"place": ["' + document.getElementById("selectDepartamento").value + '","' +document.getElementById("selectMunicipio").value + '"],' +
       '"source":"'  +         src + '",' +
@@ -102,9 +113,8 @@ function postData(){
       '"necesidadId":"'  +    nId + '"}' ;
   
 
-   
     console.log(template);
-
+  
   if (document.getElementById("txt").value.length > 0 && document.getElementById("email").value.length > 0 && document.getElementById("nombre").value.length > 0){
     $.post(url, JSON.parse(template), function(response){ 
       if ("{'msg':'OK'}" === response){
@@ -118,5 +128,9 @@ function postData(){
     });
   }else
     alert("por favor llene todos los campos para reportar el alerta");
+
+
+  // this.accuLocation = false;
+  // document.getElementById('checkLocation').checked = false;
 }
 //https://stackoverflow.com/questions/6396101/pure-javascript-send-post-data-without-a-form

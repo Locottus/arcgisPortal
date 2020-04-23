@@ -70,7 +70,7 @@
 
         <div class="input-group mb-3">
           <div class="input-group-append">
-            <label class="input-group-text" for="inputGroupSelect02"
+            <label class="input-group-text" for="selectNecesidad"
               >Necesidad</label
             >
           </div>
@@ -82,7 +82,7 @@
 
         <div class="input-group mb-3">
           <div class="input-group-append">
-            <label class="input-group-text" for="inputGroupSelect02"
+            <label class="input-group-text" for="selectDepartamento"
               >Departamento</label
             >
           </div>
@@ -98,15 +98,19 @@
 
         <div class="input-group mb-3">
           <div class="input-group-append">
-            <label class="input-group-text" for="inputGroupSelect02"
-              >Municipio</label
-            >
+            <label class="input-group-text" for="selectMunicipio">Municipio</label>
           </div>
           <select class="custom-select" id="selectMunicipio">
             <!-- <option selected>Choose...</option> -->
             <option></option>
           </select>
         </div>
+
+        <!-- Default unchecked -->
+        <div class="custom-control custom-checkbox">
+          <input type="checkbox" class="custom-control-input" onchange="acurateLocation()" id="checkLocation">
+          <label class="custom-control-label"  for="checkLocation">Localizar Punto Real en Mapa</label>
+        </div><br/>
 
         <textarea
           class="form-control"
@@ -115,8 +119,9 @@
           placeholder="Ingrese el detalle del Problema"
           name="txt"
           rows="3"
-        ></textarea>
-        <i class="fas fa-3x fa-share" onclick="postData()"></i>&nbsp;&nbsp;
+          for="txt"
+        ></textarea><br/>
+        <i class="fas fa-3x fa-share" onclick="postData()"></i>&nbsp;&nbsp;&nbsp;
         <i class="fas fa-3x fa-window-close" onclick="hide('infoForm')"></i>
       </div>
     </section>

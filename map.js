@@ -3,6 +3,8 @@ var departamentos = [];
 var necesidad = [];
 var x = 0;
 var y = 0;
+var accuLocation = false;
+var track;
 
 require([
   "esri/widgets/Track",
@@ -130,6 +132,7 @@ require([
     this.x = pt.longitude.toFixed(5);
     this.y = pt.latitude.toFixed(5);
     //console.log(this.x, this.y);
+    
   }
 
   //*** Add event and show center coordinates after the view is finished moving e.g. zoom, pan ***//
@@ -211,7 +214,7 @@ require([
   });
   // Create an instance of the Track widget
   // and add it to the view's UI
-  var track = new Track({
+  this.track = new Track({
     view: view,
   });
 
