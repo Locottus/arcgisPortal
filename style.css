@@ -7,17 +7,17 @@ body,
   width: 100%;
 }
 
-#mainImage{
+#mainImage {
   bottom: 30px;
+  left: 15px;
   /* font-family: arial; */
   position: absolute;
-  z-index: 100;
-  background-color:none;
-  
+  z-index: 1;
+  background-color: none;
 }
 
 #info {
-  top: 30px;
+  top: 10px;
   color: #444;
   height: auto;
   /* font-family: arial; */
@@ -26,7 +26,7 @@ body,
   padding: 10px;
   position: absolute;
   width: auto;
-  z-index: 40;
+  z-index: 1;
   border: solid 2px #666;
   border-radius: 4px;
   background-color: #fff;
@@ -45,15 +45,15 @@ button {
   display: block;
 }
 
-.i{
-  display:block;
+.i {
+  display: block;
 }
 /*FORMA DE BOTON*/
 
 /* The popup form - hidden by default */
 #infoForm {
   display: none;
-  top: 30px;
+  top: 10px;
   color: #444;
   height: auto;
   right: 10px;
@@ -66,15 +66,13 @@ button {
   border-radius: 4px;
   background-color: #fff;
 }
-
-
 
 /*FORMA DE datos de punto*/
 
 /* The popup form - hidden by default */
 #infoRegion {
   display: none;
-  top: 30px;
+  top: 10px;
   color: #444;
   height: auto;
   right: 10px;
@@ -88,12 +86,12 @@ button {
   background-color: #fff;
 }
 
-
 img {
   width: 30%;
   height: auto;
 }
 
-.mainImage{
+.mainImage {
+  display:block;
   text-align: center;
 }

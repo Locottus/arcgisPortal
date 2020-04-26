@@ -1,19 +1,26 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta
+    <!-- <meta
       name="viewport"
       content="initial-scale=1,maximum-scale=1,user-scalable=no"
-    />
-
+    /> -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
+    
+    
     <title>Incyt AGUAGT</title>
     <link rel="stylesheet" type="text/css" href="style.css" />
     <link
       rel="stylesheet"
       href="https://js.arcgis.com/4.14/esri/themes/light/main.css"
     />
-    <link rel="stylesheet" href="bootstrap.min.css" />
-    <link rel="stylesheet" href="fontawesome-free-5.13.0-web/css/all.css" />
+    <link rel="stylesheet" type="text/css" href="bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="fontawesome-free-5.13.0-web/css/all.css" />
+    <link rel="stylesheet" type="text/css" href="queries.css">
 
     <!-- <script src="https://js.arcgis.com/4.14/"></script> -->
     <script src="dojo.js"></script>
@@ -24,9 +31,6 @@
 
   <body>
 
-    <div id="mainImage">
-      <img src="https://arcgis-web.url.edu.gt/incyt/api/HashFiles/uploads/3logos.jpg">
-    </div>
 
     <section id="mainForm">
       <div id="info">
@@ -137,6 +141,10 @@
     </section>
 
     <div id="viewDiv"></div>
+
+    <div id="mainImage">
+      <img src="https://arcgis-web.url.edu.gt/incyt/api/HashFiles/uploads/3logos.jpg">
+    </div>
 
   </body>
 </html>
