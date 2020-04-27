@@ -5,6 +5,9 @@ var x = 0;
 var y = 0;
 var accuLocation = false;
 var track;
+var currentDepartment;
+var currentMunicipio;
+var currentMunicipioId;
 
 require([
   "esri/widgets/Track",
@@ -149,24 +152,19 @@ require([
     //console.log("clicked event triggered");
 
     view.hitTest(evt).then(getGraphics);
-    //TODO ansehen data von Punk
 
     function getGraphics(response) {
       //console.log(response.results.length);
       if (response.results.length) {
-        // FIX FIELDS
-        // console.log(
-        //   response.results[0].graphic.atributos.id +
-        //     " " +
-        //     response.results[0].graphic.atributos.departamen_1 +
-        //     " " +
-        //     response.results[0].graphic.atributos.municipi_1
-        // );
+
+        currentDepartment = response.results[0].graphic.atributos.departamen_1;
+        currentMunicipio = response.results[0].graphic.atributos.municipi_1;
+        currentMunicipioId = response.results[0].graphic.atributos.id;
+        //console.log(currentDepartment + " " + currentMunicipio);
         var titulo =
           response.results[0].graphic.atributos.departamen_1 +
           " , " +
           response.results[0].graphic.atributos.municipi_1;
-
 
         url =
           "https://arcgis-web.url.edu.gt/incyt/api/sosagua/getalertsdetail?id=" +

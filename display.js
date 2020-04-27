@@ -87,6 +87,25 @@ function acurateLocation(){
   
 }
 
+
+function reporte(){
+  console.log('entrando a generar reporte');
+  console.log(currentDepartment + ' ' + currentMunicipio + ' ' +currentMunicipioId);
+  const url = "https://arcgis-web.url.edu.gt/incyt/api/sosagua/getNecesidad";
+
+
+  $.get(url, function(data, status){
+    //console.log("Data: " + data + "\nStatus: " + status);
+    console.log(data);
+    if (data.length > 0){
+      console.log("desplegamos grid");
+    }
+  });
+
+
+}
+
+
 function postData(){
     const mId = getMunicipioId(document.getElementById("selectMunicipio").value);
     const nId = getNecesidadId(document.getElementById("selectNecesidad").value);
@@ -130,7 +149,5 @@ function postData(){
     alert("por favor llene todos los campos para reportar el alerta");
 
 
-  // this.accuLocation = false;
-  // document.getElementById('checkLocation').checked = false;
 }
 //https://stackoverflow.com/questions/6396101/pure-javascript-send-post-data-without-a-form
