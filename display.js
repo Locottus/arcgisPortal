@@ -89,10 +89,9 @@ function acurateLocation(){
 
 
 function reporte(){
-  console.log('entrando a generar reporte');
-  console.log(currentDepartment + ' ' + currentMunicipio + ' ' +currentMunicipioId);
-  const url = "https://arcgis-web.url.edu.gt/incyt/api/sosagua/getNecesidad";
-
+  //console.log('entrando a generar reporte');
+  //console.log(currentDepartment + ' ' + currentMunicipio + ' ' +currentMunicipioId);
+  var url = "https://arcgis-web.url.edu.gt/incyt/api/sosagua/getalertsdetailreport" + "?id=" + currentMunicipioId;
 
   $.get(url, function(data, status){
     //console.log("Data: " + data + "\nStatus: " + status);
@@ -107,11 +106,11 @@ function reporte(){
 
 
 function postData(){
-    const mId = getMunicipioId(document.getElementById("selectMunicipio").value);
-    const nId = getNecesidadId(document.getElementById("selectNecesidad").value);
+    var mId = getMunicipioId(document.getElementById("selectMunicipio").value);
+    var nId = getNecesidadId(document.getElementById("selectNecesidad").value);
     //console.log(mId + " " + nId);
-    const src = 'Incyt WebPage SOS Agua #SOSAGUA';
-    const url = "https://arcgis-web.url.edu.gt/incyt/api/sosagua/createalerts";
+    var src = 'Incyt WebPage SOS Agua #SOSAGUA';
+    var url = "https://arcgis-web.url.edu.gt/incyt/api/sosagua/createalerts";
     var template =  
       '{"id":"'  +           Date.now()  +  '",' +
       '"name":"'  +           document.getElementById("email").value +  '",' +
