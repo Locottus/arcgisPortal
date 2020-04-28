@@ -95,13 +95,11 @@ function reporteCubo1() {
 }
 
 
-
-
 function postData(){
     var mId = getMunicipioId(document.getElementById("selectMunicipio").value);
     var nId = getNecesidadId(document.getElementById("selectNecesidad").value);
     //console.log(mId + " " + nId);
-    var src = 'Incyt WebPage SOS Agua #SOSAGUA';
+    var src = 'Web Page';
     var url = "https://arcgis-web.url.edu.gt/incyt/api/sosagua/createalerts";
     var template =  
       '{"id":"'  +           Date.now()  +  '",' +
@@ -115,13 +113,12 @@ function postData(){
       '"geo":"'  +      accuLocation  +  '",' +
       '"created_at":"'  +      Date.now() +  '",' +
       '"favorite_count":"'  +  Date.now() +  '",' +
-      '"hashtags": [' + '"#SOSAGUA,#AGUAGT,#SINAGUA","'  + document.getElementById("selectNecesidad").value + '"],' +
+      '"hashtags": [' + '"#SOSAGUAGT,#AGUAGT,#SINAGUAGT","'  + document.getElementById("selectNecesidad").value + '"],' +
       '"status_count":"'  +  Date.now() +  '",' +
       '"place": ["' + document.getElementById("selectDepartamento").value + '","' +document.getElementById("selectMunicipio").value + '"],' +
       '"source":"'  +         src + '",' +
       '"locationId":"'  +     mId + '",' +
       '"necesidadId":"'  +    nId + '"}' ;
-  
 
     //console.log(template);
   
@@ -138,7 +135,6 @@ function postData(){
     });
   }else
     alert("por favor llene todos los campos para reportar el alerta");
-
 
 }
 //https://stackoverflow.com/questions/6396101/pure-javascript-send-post-data-without-a-form

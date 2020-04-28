@@ -8,26 +8,60 @@ function reporte(id) {
 
   $.get(url, function (data, status) {
     //console.log("Data: " + data + "\nStatus: " + status);
-    console.log(data);
     if (data.length > 0) {
       console.log("desplegamos grid");
+      fillTable(data);
+    } else {
+      alert("No hay datos disponibles");
     }
   });
 }
 
+function fillTable(data) {
+  var table = document.getElementById("tableInfo");
+  var tableTitle = document.getElementById("tableTitle");
+  tableTitle.innerHTML = "Reportes Municipales de Agua";
+  table.innerHTML = "";
+  table.innerHTML =
+    "<thead>" +
+    "   <tr>" +
+    "    <th scope='col'>Nombre</th>" +
+    "    <th scope='col'>Texto</th>" +
+    "    <th scope='col'>Fecha</th>" +
+    "    <th scope='col'>Fuente</th>" +
+    "  </tr>" +
+    "</thead>  ";
+
+  for (var i = 0; i < data.length; i++) {
+    console.log(JSON.parse(data[i].twitjson));
+    var atributos = ({ name, text, created_at, source } = JSON.parse(
+      data[i].twitjson
+    ));
+
+    //console.log(atributos);
+
+    // IM WEBSITE ANSEHEN
+    var row = table.insertRow(i + 1);
+    var cell0 = row.insertCell(0);
+    var cell1 = row.insertCell(1);
+    var cell2 = row.insertCell(2);
+    var cell3 = row.insertCell(3);
+    cell0.innerHTML = atributos.name;
+    cell1.innerHTML = atributos.text;
+    cell2.innerHTML = atributos.created_at;
+    cell3.innerHTML = atributos.source;
+  }
+}
 $(document).ready(function () {
-  console.log("Pagina cargada correctamente");
+  // console.log("Pagina cargada correctamente");
   const queryString = window.location.search;
-  console.log(queryString);
+  // console.log(queryString);
   const urlParams = new URLSearchParams(queryString);
   const id = urlParams.get("id");
   const municipio = urlParams.get("municipio");
   const departamento = urlParams.get("departamento");
-  console.log(id);
-  console.log(municipio);
-  console.log(departamento);
-
-  document.getElementById("tituloPrincipal").innerHTML = departamento + ' ' + municipio;
+  document.getElementById("tituloPrincipal").innerHTML =
+    departamento + " " + municipio;
   //cargamos los datos detallados
   reporte(id);
 });

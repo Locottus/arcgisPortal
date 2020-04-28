@@ -177,11 +177,11 @@ require([
           table.innerHTML = "";
           table.innerHTML =
             "<thead>" +
-            "<tr>" +
-            "<th scope='col'>Descripcion</th>" +
-            "<th scope='col'>Mes</th>" +
-            "<th scope='col'>Año</th>" +
-            "    <th scope='col'>Numero de Avisos</th>" +
+            "  <tr>" +
+            "   <th scope='col'>Descripcion</th>" +
+            "   <th scope='col'>Mes</th>" +
+            "   <th scope='col'>Año</th>" +
+            "   <th scope='col'>Numero de Avisos</th>" +
             "  </tr>" +
             "</thead>  ";
           for (var i = 0; i < response.data.length; i++) {
