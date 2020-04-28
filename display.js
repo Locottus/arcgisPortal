@@ -87,22 +87,14 @@ function acurateLocation(){
   
 }
 
-
-function reporte(){
-  //console.log('entrando a generar reporte');
-  //console.log(currentDepartment + ' ' + currentMunicipio + ' ' +currentMunicipioId);
-  var url = "https://arcgis-web.url.edu.gt/incyt/api/sosagua/getalertsdetailreport" + "?id=" + currentMunicipioId;
-
-  $.get(url, function(data, status){
-    //console.log("Data: " + data + "\nStatus: " + status);
-    console.log(data);
-    if (data.length > 0){
-      console.log("desplegamos grid");
-    }
-  });
-
-
+function reporteCubo1() {
+  //var strValue = document.getElementById('txtboxId').value;
+  var url = "cubo1.html?id=" + currentMunicipioId + '&municipio=' + currentMunicipio + '&departamento=' + currentDepartment ;
+  myWindow = window.open(url, '', 'width=800,height=200,scrollbars=1');
+  myWindow.focus();
 }
+
+
 
 
 function postData(){
@@ -131,7 +123,7 @@ function postData(){
       '"necesidadId":"'  +    nId + '"}' ;
   
 
-    console.log(template);
+    //console.log(template);
   
   if (document.getElementById("txt").value.length > 0 && document.getElementById("email").value.length > 0 && document.getElementById("nombre").value.length > 0){
     $.post(url, JSON.parse(template), function(response){ 
