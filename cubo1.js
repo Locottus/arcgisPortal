@@ -1,15 +1,15 @@
 function reporte(id) {
-  console.log("entrando a generar reporte");
+  //console.log("entrando a generar reporte");
   //console.log(currentDepartment + ' ' + currentMunicipio + ' ' +currentMunicipioId);
   var url =
     "https://arcgis-web.url.edu.gt/incyt/api/sosagua/getalertsdetailreport" +
-    "?id=" +
-    id;
+    "?id=" + id;
 
   $.get(url, function (data, status) {
     //console.log("Data: " + data + "\nStatus: " + status);
     if (data.length > 0) {
       console.log("desplegamos grid");
+      //console.log(data[0].twitjson);
       fillTable(data);
     } else {
       alert("No hay datos disponibles");
@@ -17,7 +17,9 @@ function reporte(id) {
   });
 }
 
+
 function fillTable(data) {
+  console.log(data);
   var table = document.getElementById("tableInfo");
   var tableTitle = document.getElementById("tableTitle");
   tableTitle.innerHTML = "Reportes Municipales de Agua";
@@ -33,10 +35,8 @@ function fillTable(data) {
     "</thead>  ";
 
   for (var i = 0; i < data.length; i++) {
-    console.log(JSON.parse(data[i].twitjson));
-    var atributos = ({ name, text, created_at, source } = JSON.parse(
-      data[i].twitjson
-    ));
+    //console.log(JSON.parse(data[i].twitjson));
+    var atributos = ({ name, text, created_at, source } = data[i].twitjson);
 
     //console.log(atributos);
 
