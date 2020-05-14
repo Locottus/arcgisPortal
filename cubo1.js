@@ -35,8 +35,8 @@ function fillTable(data) {
     "</thead>  ";
 
   for (var i = 0; i < data.length; i++) {
-    //console.log(JSON.parse(data[i].twitjson));
-    var atributos = ({ name, text, created_at, source } = data[i].twitjson);
+    console.log(JSON.parse(data[i].textjson));
+    var atributos = ({ name, text, created_at, source } = JSON.parse(data[i].textjson));
 
     //console.log(atributos);
 
