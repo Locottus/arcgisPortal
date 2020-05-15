@@ -37,7 +37,17 @@ function fillTable(data) {
   for (var i = 0; i < data.length; i++) {
     console.log(JSON.parse(data[i].textjson));
     var atributos = ({ name, text, created_at, source } = JSON.parse(data[i].textjson));
+    var myDate;
 
+    if(isNaN(atributos.created_at)){
+      console.log(atributos.created_at + " is not a number ");
+      myDate = atributos.created_at;
+     }else{
+      console.log(atributos.created_at + " is a number ");
+      myDate = new Date(1000 * atributos.created_at);
+      console.log(myDate);
+     }
+    
     //console.log(atributos);
 
     // IM WEBSITE ANSEHEN
@@ -48,7 +58,7 @@ function fillTable(data) {
     var cell3 = row.insertCell(3);
     cell0.innerHTML = atributos.name;
     cell1.innerHTML = atributos.text;
-    cell2.innerHTML = atributos.created_at;
+    cell2.innerHTML = myDate;//atributos.created_at;
     cell3.innerHTML = atributos.source;
   }
 }
